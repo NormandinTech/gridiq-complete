@@ -1,0 +1,20 @@
+[0;1;32m●[0m gridiq.service - GridIQ Platform
+     Loaded: loaded (]8;;file://ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01/etc/systemd/system/gridiq.service/etc/systemd/system/gridiq.service]8;;; [0;1;32menabled[0m; preset: [0;1;32menabled[0m)
+     Active: [0;1;32mactive (running)[0m since Sat 2026-03-28 00:21:50 UTC; 4 days ago
+   Main PID: 338024 (uvicorn)
+      Tasks: 7 (limit: 2318)
+     Memory: 78.9M (peak: 80.2M)
+        CPU: 15min 54.373s
+     CGroup: /system.slice/gridiq.service
+             └─[0;38;5;245m338024 /root/gridiq_complete/venv/bin/python3 /root/gridiq_complete/venv/bin/uvicorn backend.main:app --host 0.0.0.0 --port 8001[0m
+
+Apr 01 03:32:45 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:39650 - "GET /api/.env HTTP/1.0" 404 Not Found
+Apr 01 03:52:53 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:44582 - "GET /api/ HTTP/1.0" 404 Not Found
+Apr 01 05:05:55 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:60648 - "GET /api/tokens HTTP/1.0" 404 Not Found
+Apr 01 11:40:55 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:50376 - "GET /api/ HTTP/1.0" 404 Not Found
+Apr 01 14:18:37 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:49224 - "GET /api/ HTTP/1.0" 404 Not Found
+Apr 01 14:18:37 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:49240 - "GET /api/ HTTP/1.0" 404 Not Found
+Apr 01 15:29:17 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:45474 - "POST /api/tokens HTTP/1.0" 404 Not Found
+Apr 01 16:08:39 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:57404 - "GET /docs HTTP/1.0" 200 OK
+Apr 01 16:08:40 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:57412 - "GET /docs HTTP/1.0" 200 OK
+Apr 01 17:01:59 ubuntu-s-2vcpu-2gb-90gb-intel-sfo3-01 uvicorn[338024]: INFO:     127.0.0.1:32904 - "GET /docs HTTP/1.0" 200 OK
