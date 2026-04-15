@@ -629,3 +629,30 @@ async def health_check():
             "telemetry_simulator": "online",
         },
     }
+
+@router.get("/compliance/nerc-cip/export", tags=["Compliance"])
+async def export_nerc_cip_pdf():
+    from io import BytesIO
+    from datetime import datetime
+    from fastapi.responses import StreamingResponse
+    from reportlab.lib.pagesizes import letter
+    from reportlab.lib import colors
+    from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+    from reportlab.lib.units import inch
+    from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle, HRFlowable
+    from reportlab.lib.enums import TA_CENTER, TA_RIGHT
+    from backend.security.cyber import compliance_checker
+
+    controls = compliance_checker.assess_all()
+    overall = compliance_checker.overall_score(controls)
+    data = {"overall_score": overall, "controls": controls, "next_audit_days": 42, "nerc_region": "WECC"}
+
+    # import and call builder from uploaded file
+    import sys, importlib.util
+    spec = importlib.util.spec_from_file_location("nerc_pdf", "/root/nerc_pdf_export.py")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+    pdf_buf = mod.build_nerc_pdf(data)
+    filename = f"GridIQ_NERC_CIP_{datetime.utcnow().strftime('%Y%m%d')}.pdf"
+    return StreamingResponse(pdf_buf, media_type="application/pdf",
+        headers={"Content-Disposition": f'attachment; filename="{filename}"'})
