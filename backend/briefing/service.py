@@ -72,7 +72,7 @@ Under 300 words. No bullet points. Clear paragraphs only."""
                 "content-type": "application/json",
             },
             json={
-                "model": "claude-sonnet-4-20250514",
+                "model": "claude-sonnet-5-5",
                 "max_tokens": 600,
                 "messages": [{"role": "user", "content": prompt}],
             },
